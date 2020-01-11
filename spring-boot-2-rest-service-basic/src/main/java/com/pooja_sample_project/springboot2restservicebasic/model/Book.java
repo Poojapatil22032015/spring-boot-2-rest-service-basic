@@ -5,8 +5,6 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "books")
 public class Book {
     @Id
-    @GeneratedValue
-    private Long id;
     @NotBlank
     private String book_name;
     @NotBlank
@@ -16,18 +14,11 @@ public class Book {
     public Book(){
         super();
     }
-    public Book(Long id, String book_name, String author_name, String Sub_name) {
+    public Book(String book_name, String author_name, String Sub_name) {
         super();
-        this.id = id;
         this.book_name = book_name;
         this.author_name = author_name;
         this.Sub_name= Sub_name;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
     }
     public String getBook_name() {
         return book_name;

@@ -5,7 +5,6 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "Shelf")
 public class Shelf {
     @Id
-    @GeneratedValue
     @NotBlank
     private String Subject;
 

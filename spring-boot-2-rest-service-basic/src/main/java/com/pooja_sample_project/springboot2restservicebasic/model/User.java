@@ -1,20 +1,20 @@
 package com.pooja_sample_project.springboot2restservicebasic.model;
-import org.springframework.data.annotation.Id;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name="User")
 public class User {
-    @Id
-    @GeneratedValue
+    @NotBlank
     private String name;
     @NotBlank
     private String email;
+    @Id
     @NotBlank
     private String phone_number;
     @NotBlank
     private String password;
 public User(){
+
     super();
 }
 public User(String name, String email, String phone_number,String password){

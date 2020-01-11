@@ -22,14 +22,14 @@ public class UserController {
         return userRepository.save(user);
     }
     // Get a Single Note
-    @GetMapping("/user/{phone_number}")
-    public User getByPhone_number(@PathVariable(value = "phone_number") String phone_number) throws UserNotFoundException {
+    @GetMapping("/User/{id}")
+    public User getByPhone_number(@PathVariable(value = "id") String phone_number) throws UserNotFoundException {
         return userRepository.findById(phone_number)
                 .orElseThrow(() -> new UserNotFoundException(phone_number));
     }
     // Update User
     @PutMapping("/User/{id}")
-    public User updateUser(@PathVariable(value = "phone_number") String phone_number,
+    public User updateUser(@PathVariable(value = "id") String phone_number,
                            @Valid @RequestBody User userDetails) throws UserNotFoundException {
 
         User user = userRepository.findById(phone_number)
@@ -45,8 +45,8 @@ public class UserController {
     }
 
     // Delete a User
-    @DeleteMapping("/User/{phone_number}")
-    public ResponseEntity<?> deleteBook(@PathVariable(value = "phone_number") String phone_number) throws UserNotFoundException {
+    @DeleteMapping("/User/{id}")
+    public ResponseEntity<?> deleteBook(@PathVariable(value = "id") String phone_number) throws UserNotFoundException {
         User user = userRepository.findById(phone_number)
                 .orElseThrow(() -> new UserNotFoundException(phone_number));
 
