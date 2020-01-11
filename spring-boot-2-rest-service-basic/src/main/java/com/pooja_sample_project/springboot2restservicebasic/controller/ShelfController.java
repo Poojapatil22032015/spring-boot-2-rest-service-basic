@@ -16,7 +16,7 @@ public class ShelfController {
     // Get All Subjects
     @GetMapping("/Shelf")
     public List<Shelf> getAllSubjects() {
-        return ShelfRepository.findAll();
+        return shelfRepository.findAll();
     }
 
     // Create a new Subject
@@ -30,27 +30,13 @@ public class ShelfController {
         return shelfRepository.findById(Subject)
                 .orElseThrow(() -> new SubjectNotFoundException(Subject));
     }
-    // Update Subject
-    @PutMapping("/Shelf/{id}")
-    public Shelf updateSubject(@PathVariable(value = "Subject") String Subject,
-                           @Valid @RequestBody Shelf subjectDetails) throws SubjectNotFoundException {
-
-        Shelf shelf = shelfRepository.findById(Subject)
-                .orElseThrow(() -> new SubjectNotFoundException(Subject));
-
-        shelf.setSubject(subjectDetails.getSubject());
-
-        Shelf updatedSubject = (Shelf) shelfRepository.save(Subject);
-
-        return updatedSubject;
-    }
     // Delete a Subject
-    @DeleteMapping("/Shelf/{Subject}")
+    @DeleteMapping("/Shelf/{id}")
     public ResponseEntity<?> deleteSubject(@PathVariable(value = "id") String Subject) throws SubjectNotFoundException {
         Shelf shelf = shelfRepository.findById(Subject)
                 .orElseThrow(() -> new SubjectNotFoundException(Subject));
 
-        shelfRepository.delete(Subject);
+        shelfRepository.delete(shelf);
 
         return ResponseEntity.ok().build();
     }
