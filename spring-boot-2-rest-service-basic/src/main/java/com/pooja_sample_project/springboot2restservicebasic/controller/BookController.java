@@ -43,7 +43,7 @@ public class BookController {
 
         book.setBook_name(bookDetails.getBook_name());
         book.setAuthor_name(bookDetails.getAuthor_name());
-        book.setIsbn(bookDetails.getIsbn());
+        book.setSub_name(bookDetails.getSub_name());
 
         Book updatedBook = bookRepository.save(book);
 

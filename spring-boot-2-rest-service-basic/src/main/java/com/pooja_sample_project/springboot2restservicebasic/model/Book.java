@@ -12,16 +12,16 @@ public class Book {
     @NotBlank
     private String author_name;
     @NotBlank
-    private String isbn;
+    private String Sub_name;
     public Book(){
         super();
     }
-    public Book(Long id, String book_name, String author_name, String isbn) {
+    public Book(Long id, String book_name, String author_name, String Sub_name) {
         super();
         this.id = id;
         this.book_name = book_name;
         this.author_name = author_name;
-        this.isbn=isbn;
+        this.Sub_name= Sub_name;
     }
     public Long getId() {
         return id;
@@ -41,10 +41,10 @@ public class Book {
     public void setAuthor_name(String author_name) {
         this.author_name = author_name;
     }
-    public String getIsbn() {
-        return isbn;
+    public String getSub_name() {
+        return Sub_name;
     }
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setSub_name(String Sub_name) {
+        this.Sub_name = Sub_name;
     }
 }

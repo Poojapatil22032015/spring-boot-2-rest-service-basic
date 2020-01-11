@@ -16,7 +16,7 @@ public class ShelfController {
     // Get All Subjects
     @GetMapping("/Shelf")
     public List<Shelf> getAllSubjects() {
-        return shelfRepository.findAll();
+        return ShelfRepository.findAll();
     }
 
     // Create a new Subject
