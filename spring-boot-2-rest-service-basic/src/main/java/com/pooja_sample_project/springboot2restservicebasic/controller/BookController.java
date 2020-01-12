@@ -15,18 +15,21 @@ public class BookController {
     BookRepository bookRepository;
 
     // Get All Books
+    @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/books")
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
     // Create a new Note
+    @CrossOrigin(origins = "http://localhost:8088")
     @PostMapping("/books")
     public Book createBook(@Valid @RequestBody Book book) {
         return bookRepository.save(book);
     }
 
     // Get a Single Book
+    @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/books/{id}")
     public Book getNoteById(@PathVariable(value = "id") String bookId) throws BookNotFoundException {
         return bookRepository.findById(bookId)
@@ -34,6 +37,7 @@ public class BookController {
     }
 
     // Update a Book
+    @CrossOrigin(origins = "http://localhost:8088")
     @PutMapping("/books/{id}")
     public Book updateNote(@PathVariable(value = "id") String bookId,
                            @Valid @RequestBody Book bookDetails) throws BookNotFoundException {
@@ -51,6 +55,7 @@ public class BookController {
     }
 
     // Delete a Book
+    @CrossOrigin(origins = "http://localhost:8088")
     @DeleteMapping("/books/{id}")
     public ResponseEntity<?> deleteBook(@PathVariable(value = "id") String bookId) throws BookNotFoundException {
         Book book = bookRepository.findById(bookId)

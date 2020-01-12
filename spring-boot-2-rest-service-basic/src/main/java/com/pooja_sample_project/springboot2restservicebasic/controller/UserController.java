@@ -12,22 +12,26 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
     // Get All Users
+    @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/User")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
     // Create a new User
+    @CrossOrigin(origins = "http://localhost:8088")
     @PostMapping("/User")
     public User createUser(@Valid @RequestBody User user) {
         return userRepository.save(user);
     }
     // Get a Single Note
+    @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/User/{id}")
     public User getByPhone_number(@PathVariable(value = "id") String phone_number) throws UserNotFoundException {
         return userRepository.findById(phone_number)
                 .orElseThrow(() -> new UserNotFoundException(phone_number));
     }
     // Update User
+    @CrossOrigin(origins = "http://localhost:8088")
     @PutMapping("/User/{id}")
     public User updateUser(@PathVariable(value = "id") String phone_number,
                            @Valid @RequestBody User userDetails) throws UserNotFoundException {
@@ -45,6 +49,7 @@ public class UserController {
     }
 
     // Delete a User
+    @CrossOrigin(origins = "http://localhost:8088")
     @DeleteMapping("/User/{id}")
     public ResponseEntity<?> deleteBook(@PathVariable(value = "id") String phone_number) throws UserNotFoundException {
         User user = userRepository.findById(phone_number)

@@ -14,23 +14,27 @@ public class ShelfController {
     ShelfRepository shelfRepository;
 
     // Get All Subjects
+    @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/Shelf")
     public List<Shelf> getAllSubjects() {
         return shelfRepository.findAll();
     }
 
     // Create a new Subject
+    @CrossOrigin(origins = "http://localhost:8088")
     @PostMapping("/Shelf")
     public Shelf createSubject(@Valid @RequestBody Shelf Subject) {
         return shelfRepository.save(Subject);
     }
     // Get a Single Subject
+    @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/Shelf/{id}")
     public Shelf getSubjectById(@PathVariable(value = "id") String Subject) throws SubjectNotFoundException {
         return shelfRepository.findById(Subject)
                 .orElseThrow(() -> new SubjectNotFoundException(Subject));
     }
     // Delete a Subject
+    @CrossOrigin(origins = "http://localhost:8088")
     @DeleteMapping("/Shelf/{id}")
     public ResponseEntity<?> deleteSubject(@PathVariable(value = "id") String Subject) throws SubjectNotFoundException {
         Shelf shelf = shelfRepository.findById(Subject)
