@@ -19,6 +19,6 @@ public class Shelf {
         return Subject;
     }
     public void setSubject(String subject) {
-        this.Subject = Subject;
+        this.Subject = subject;
     }
 }

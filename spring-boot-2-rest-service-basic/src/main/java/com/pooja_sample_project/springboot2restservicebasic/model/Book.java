@@ -5,21 +5,45 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "books")
 public class Book {
     @Id
+    @GeneratedValue
+    private Long id;
+    @NotBlank
+    private String phone_number;
     @NotBlank
     private String book_name;
     @NotBlank
     private String author_name;
     @NotBlank
-    private String Sub_name;
+    private String sub_name;
     public Book(){
+
         super();
     }
-    public Book(String book_name, String author_name, String Sub_name) {
+    public Book(Long id, String phone_number, String book_name, String author_name, String sub_name) {
         super();
+        this.id = id;
+        this.phone_number = phone_number;
         this.book_name = book_name;
         this.author_name = author_name;
-        this.Sub_name= Sub_name;
+        this.sub_name= sub_name;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
     public String getBook_name() {
         return book_name;
     }
@@ -33,9 +57,9 @@ public class Book {
         this.author_name = author_name;
     }
     public String getSub_name() {
-        return Sub_name;
+        return sub_name;
     }
-    public void setSub_name(String Sub_name) {
-        this.Sub_name = Sub_name;
+    public void setSub_name(String sub_name) {
+        this.sub_name = sub_name;
     }
 }

@@ -1,5 +1,6 @@
 package com.pooja_sample_project.springboot2restservicebasic.controller;
 import com.pooja_sample_project.springboot2restservicebasic.model.User;
+import com.pooja_sample_project.springboot2restservicebasic.model.login;
 import com.pooja_sample_project.springboot2restservicebasic.repository.UserRepository;
 import com.pooja_sample_project.springboot2restservicebasic.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,32 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    @CrossOrigin(origins = "http://localhost:8088")
+    @PostMapping("/login")
+    public String ValidateUser(@Valid @RequestBody login log){
+        String result = null;
+        try {
+            User user = getByPhone_number(log.getUsername());
+            if(user.getPassword().contentEquals(log.getPassword())){
+                result = "Login Successfull";
+            }else{
+                result = "Username or password is incorrect";
+            }
+        }catch (UserNotFoundException e){
+            result = "User Not Found";
+        }
+        return result;
+    }
+
     // Create a new User
     @CrossOrigin(origins = "http://localhost:8088")
     @PostMapping("/User")
-    public User createUser(@Valid @RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user)
+    {
         return userRepository.save(user);
     }
-    // Get a Single Note
+    // Get a Single User
     @CrossOrigin(origins = "http://localhost:8088")
     @GetMapping("/User/{id}")
     public User getByPhone_number(@PathVariable(value = "id") String phone_number) throws UserNotFoundException {
