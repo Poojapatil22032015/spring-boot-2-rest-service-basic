@@ -39,9 +39,14 @@ public class UserController {
     // Create a new User
     @CrossOrigin(origins = "http://localhost:8088")
     @PostMapping("/User")
-    public User createUser(@Valid @RequestBody User user)
+    public String createUser(@Valid @RequestBody User user)
     {
-        return userRepository.save(user);
+        User userstored =  userRepository.save(user);
+        if(userstored.getPhone_number() == user.getPhone_number()){
+            return "User Saved Successfully";
+        }
+
+
     }
     // Get a Single User
     @CrossOrigin(origins = "http://localhost:8088")
